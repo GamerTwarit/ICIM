@@ -1,0 +1,242 @@
+[
+    {
+        "question": "Students and parents often misunderstand each other.",
+        "options": [
+            {"text": "Ignore the problem", "isCorrect": false},
+            {"text": "Talk openly and regularly", "isCorrect": true},
+            {"text": "Argue until someone gives in", "isCorrect": false},
+            {"text": "Avoid talking to prevent fights", "isCorrect": false},
+            {"text": "Listen and try to understand each other", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Too much pressure from parents can stress students out.",
+        "options": [
+            {"text": "Focus only on grades", "isCorrect": false},
+            {"text": "Support their effort, not just results", "isCorrect": true},
+            {"text": "Encourage a balanced life", "isCorrect": true},
+            {"text": "Compare them to other kids", "isCorrect": false},
+            {"text": "Expect too much from them", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Parents and students often don’t understand each other due to the generation gap.",
+        "options": [
+            {"text": "Ignore each other’s opinions", "isCorrect": false},
+            {"text": "Parents should enforce their views", "isCorrect": false},
+            {"text": "Try to understand each other’s views", "isCorrect": true},
+            {"text": "Students should dismiss parents' opinions", "isCorrect": false},
+            {"text": "Find common ground", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Conflicts over career expectations.",
+        "options": [
+            {"text": "Parents should choose the career", "isCorrect": false},
+            {"text": "Students should ignore parents", "isCorrect": false},
+            {"text": "Talk openly about career goals", "isCorrect": true},
+            {"text": "Avoid talking about careers", "isCorrect": false},
+            {"text": "Consider the student's interests and strengths", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Balancing tradition with modern norms.",
+        "options": [
+            {"text": "Ignore cultural values", "isCorrect": false},
+            {"text": "Stick strictly to tradition", "isCorrect": false},
+            {"text": "Talk and find a compromise", "isCorrect": true},
+            {"text": "Only follow modern ways", "isCorrect": false},
+            {"text": "Respect culture while adapting to changes", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Managing screen time.",
+        "options": [
+            {"text": "Allow unlimited screen time", "isCorrect": false},
+            {"text": "Ban all technology", "isCorrect": false},
+            {"text": "Set limits and create tech-free zones", "isCorrect": true},
+            {"text": "Let the student decide", "isCorrect": false},
+            {"text": "Parents should model healthy tech use", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Effective discipline.",
+        "options": [
+            {"text": "No rules", "isCorrect": false},
+            {"text": "Strict punishment", "isCorrect": false},
+            {"text": "Set clear rules together", "isCorrect": true},
+            {"text": "Ignore bad behavior", "isCorrect": false},
+            {"text": "Reward good behavior", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Concerns about peer influence.",
+        "options": [
+            {"text": "Stop the student from having friends", "isCorrect": false},
+            {"text": "Talk openly about friendships", "isCorrect": true},
+            {"text": "Ignore their social life", "isCorrect": false},
+            {"text": "Impose strict rules", "isCorrect": false},
+            {"text": "Help them make good decisions", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Conflicts over differing priorities.",
+        "options": [
+            {"text": "Force the student to focus only on school", "isCorrect": false},
+            {"text": "Ignore the student’s needs", "isCorrect": false},
+            {"text": "Help them manage their time", "isCorrect": true},
+            {"text": "Let them neglect responsibilities", "isCorrect": false},
+            {"text": "Create a balanced schedule together", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Resolving conflicts between students and parents.",
+        "options": [
+            {"text": "Open communication and understanding", "isCorrect": true},
+            {"text": "Ignore the problem", "isCorrect": false},
+            {"text": "One side always gives in", "isCorrect": false},
+            {"text": "Argue until someone wins", "isCorrect": false},
+            {"text": "Compromise and respect each other", "isCorrect": true}
+        ]
+    },
+    {
+        "question": "Common distractions for students at home.",
+        "options": [
+            {"text": "Television", "isCorrect": true},
+            {"text": "Mobile phones", "isCorrect": true},
+            {"text": "Siblings", "isCorrect": false},
+            {"text": "Outdoor noise", "isCorrect": false},
+            {"text": "House chores", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Why do students lose interest in studies?",
+        "options": [
+            {"text": "Boring teaching methods", "isCorrect": true},
+            {"text": "Lack of sleep", "isCorrect": false},
+            {"text": "Too many extracurricular activities", "isCorrect": false},
+            {"text": "Difficult curriculum", "isCorrect": true},
+            {"text": "Peer pressure", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Activities that reduce student stress.",
+        "options": [
+            {"text": "Regular exercise", "isCorrect": true},
+            {"text": "Playing video games", "isCorrect": false},
+            {"text": "Meditation", "isCorrect": true},
+            {"text": "Spending time on social media", "isCorrect": false},
+            {"text": "Staying up late", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Why do students struggle to concentrate?",
+        "options": [
+            {"text": "Hunger", "isCorrect": false},
+            {"text": "Anxiety", "isCorrect": true},
+            {"text": "Lack of interest in the subject", "isCorrect": true},
+            {"text": "Physical discomfort", "isCorrect": false},
+            {"text": "Playing too many sports", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Issues from too much phone use.",
+        "options": [
+            {"text": "Eye strain", "isCorrect": true},
+            {"text": "Sleep disturbances", "isCorrect": true},
+            {"text": "Improved multitasking", "isCorrect": false},
+            {"text": "Enhanced learning", "isCorrect": false},
+            {"text": "Increased social interactions", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Challenges when moving from primary to secondary school.",
+        "options": [
+            {"text": "Increased academic workload", "isCorrect": true},
+            {"text": "Making new friends", "isCorrect": true},
+            {"text": "Familiar teachers", "isCorrect": false},
+            {"text": "Less homework", "isCorrect": false},
+            {"text": "More free time", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Factors that hurt a student’s self-esteem.",
+        "options": [
+            {"text": "Bullying", "isCorrect": true},
+            {"text": "Poor academic performance", "isCorrect": true},
+            {"text": "Praise from teachers", "isCorrect": false},
+            {"text": "Supportive friends", "isCorrect": false},
+            {"text": "Participation in sports", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Activities causing lack of sleep.",
+        "options": [
+            {"text": "Late-night studying", "isCorrect": true},
+            {"text": "Watching TV shows", "isCorrect": true},
+            {"text": "Morning exercise", "isCorrect": false},
+            {"text": "Reading books", "isCorrect": false},
+            {"text": "Early bedtime", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Common peer pressures.",
+        "options": [
+            {"text": "Following fashion trends", "isCorrect": true},
+            {"text": "Trying out smoking or drinking", "isCorrect": true},
+            {"text": "Joining study groups", "isCorrect": false},
+            {"text": "Participating in extracurricular activities", "isCorrect": false},
+            {"text": "Reading more books", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Issues from not having a balanced diet.",
+        "options": [
+            {"text": "Lack of energy", "isCorrect": true},
+            {"text": "Poor concentration", "isCorrect": true},
+            {"text": "Increased academic performance", "isCorrect": false},
+            {"text": "Better sleep", "isCorrect": false},
+            {"text": "Enhanced athletic ability", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Factors causing anxiety in students.",
+        "options": [
+            {"text": "Fear of failure", "isCorrect": true},
+            {"text": "Excessive academic pressure", "isCorrect": true},
+            {"text": "Frequent praise", "isCorrect": false},
+            {"text": "Supportive teachers", "isCorrect": false},
+            {"text": "Stable home environment", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Benefits of a daily routine.",
+        "options": [
+            {"text": "Better time management", "isCorrect": true},
+            {"text": "Improved sleep patterns", "isCorrect": true},
+            {"text": "More time for TV", "isCorrect": false},
+            {"text": "Less time for studies", "isCorrect": false},
+            {"text": "Increased stress levels", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "How can parents support their child during exams?",
+        "options": [
+            {"text": "Encourage regular breaks", "isCorrect": true},
+            {"text": "Provide nutritious meals", "isCorrect": true},
+            {"text": "Enforce long study hours", "isCorrect": false},
+            {"text": "Discourage social interaction", "isCorrect": false},
+            {"text": "Limit sleep time", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "How can students improve their concentration?",
+        "options": [
+            {"text": "Create a quiet study environment", "isCorrect": true},
+            {"text": "Set small, achievable goals", "isCorrect": true},
+            {"text": "Study with the TV on", "isCorrect": false},
+            {"text": "Frequently check social media", "isCorrect": false},
+            {"text": "Skip breaks", "isCorrect": false}
+        ]
+    }
+]
