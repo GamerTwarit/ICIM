@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <style>
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .quiz-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+        max-width: 800px;
+        width: 100%;
+        position: relative;
+        animation: fadeIn 1s ease-in-out;
+    }
+    .score-box {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+    }
+    .question-box {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    .options {
+        display: flex;
+        flex-direction: column;
+    }
+    .option {
+        background-color: #333;
+        color: #fff;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        font-size: 18px;
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in-out forwards;
+    }
+    .option:hover {
+        background-color: #555;
+        transform: scale(1.05);
+    }
+    .result {
+        font-size: 20px;
+        margin-top: 20px;
+        display: none;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .result.correct {
+        background-color: #d4edda;
+        color: #28a745;
+    }
+    .result.incorrect {
+        background-color: #f8d7da;
+        color: #dc3545;
+    }
+    .submit-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s, transform 0.3s;
+        text-align: center;
+        font-size: 18px;
+        display: none;
+    }
+    .submit-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+    .skip-btn {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #ffc107;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        margin-left: 10px;
+        transition: background-color 0.3s, transform 0.3s;
+        text-align: center;
+        font-size: 18px;
+    }
+    .skip-btn:hover {
+        background-color: #e0a800;
+        transform: scale(1.05);
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        animation: fadeInOverlay 0.5s ease-in-out;
+    }
+    .final-score {
+        font-size: 32px;
+        color: #fff;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 90%;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        animation: fadeInFinalScore 1s ease-in-out forwards;
+    }
+    .restart-btn {
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #28a745;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .restart-btn:hover {
+        background-color: #218838;
+        transform: scale(1.05);
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes fadeInOverlay {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    @keyframes fadeInFinalScore {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="score-box">Score: <span id="score">0</span></div>
+        <div id="question-box" class="question-box"></div>
+        <div id="options" class="options"></div>
+        <div id="result" class="result"></div>
+        <div id="submit-btn" class="submit-btn" onclick="nextQuestion()">Next</div>
+        <div id="skip-btn" class="skip-btn" onclick="skipQuestion()">Skip Question</div>
+    </div>
+
+    <!-- Overlay for final score -->
+    <div id="overlay" class="overlay">
+        <div id="final-score" class="final-score"></div>
+        <div id="restart-btn" class="restart-btn" onclick="restartQuiz()">Restart Quiz</div>
+    </div>
+
+    <script>
+        const quizData = [
+     {
+        "question": "Activities that reduce student stress.",
+        "options": [
+            {"text": "Regular exercise", "isCorrect": true},
+            {"text": "Playing video games", "isCorrect": false},
+            {"text": "Meditation", "isCorrect": true},
+            {"text": "Spending time on social media", "isCorrect": false},
+            {"text": "Staying up late", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Why do students struggle to concentrate?",
+        "options": [
+            {"text": "Hunger", "isCorrect": false},
+            {"text": "Anxiety", "isCorrect": true},
+            {"text": "Lack of interest in the subject", "isCorrect": true},
+            {"text": "Physical discomfort", "isCorrect": false},
+            {"text": "Playing too many sports", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Issues from too much phone use.",
+        "options": [
+            {"text": "Eye strain", "isCorrect": true},
+            {"text": "Sleep disturbances", "isCorrect": true},
+            {"text": "Improved multitasking", "isCorrect": false},
+            {"text": "Enhanced learning", "isCorrect": false},
+            {"text": "Increased social interactions", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Challenges when moving from primary to secondary school.",
+        "options": [
+            {"text": "Increased academic workload", "isCorrect": true},
+            {"text": "Making new friends", "isCorrect": true},
+            {"text": "Familiar teachers", "isCorrect": false},
+            {"text": "Less homework", "isCorrect": false},
+            {"text": "More free time", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Factors that hurt a student’s self-esteem.",
+        "options": [
+            {"text": "Bullying", "isCorrect": true},
+            {"text": "Poor academic performance", "isCorrect": true},
+            {"text": "Praise from teachers", "isCorrect": false},
+            {"text": "Supportive friends", "isCorrect": false},
+            {"text": "Participation in sports", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Activities causing lack of sleep.",
+        "options": [
+            {"text": "Late-night studying", "isCorrect": true},
+            {"text": "Watching TV shows", "isCorrect": true},
+            {"text": "Morning exercise", "isCorrect": false},
+            {"text": "Reading books", "isCorrect": false},
+            {"text": "Early bedtime", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Common peer pressures.",
+        "options": [
+            {"text": "Following fashion trends", "isCorrect": true},
+            {"text": "Trying out smoking or drinking", "isCorrect": true},
+            {"text": "Joining study groups", "isCorrect": false},
+            {"text": "Participating in extracurricular activities", "isCorrect": false},
+            {"text": "Reading more books", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Issues from not having a balanced diet.",
+        "options": [
+            {"text": "Lack of energy", "isCorrect": true},
+            {"text": "Poor concentration", "isCorrect": true},
+            {"text": "Increased academic performance", "isCorrect": false},
+            {"text": "Better sleep", "isCorrect": false},
+            {"text": "Enhanced athletic ability", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Factors causing anxiety in students.",
+        "options": [
+            {"text": "Fear of failure", "isCorrect": true},
+            {"text": "Excessive academic pressure", "isCorrect": true},
+            {"text": "Frequent praise", "isCorrect": false},
+            {"text": "Supportive teachers", "isCorrect": false},
+            {"text": "Stable home environment", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "Benefits of a daily routine.",
+        "options": [
+            {"text": "Better time management", "isCorrect": true},
+            {"text": "Improved sleep patterns", "isCorrect": true},
+            {"text": "More time for TV", "isCorrect": false},
+            {"text": "Less time for studies", "isCorrect": false},
+            {"text": "Increased stress levels", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "How can parents support their child during exams?",
+        "options": [
+            {"text": "Encourage regular breaks", "isCorrect": true},
+            {"text": "Provide nutritious meals", "isCorrect": true},
+            {"text": "Enforce long study hours", "isCorrect": false},
+            {"text": "Discourage social interaction", "isCorrect": false},
+            {"text": "Limit sleep time", "isCorrect": false}
+        ]
+    },
+    {
+        "question": "How can students improve their concentration?",
+        "options": [
+            {"text": "Create a quiet study environment", "isCorrect": true},
+            {"text": "Set small, achievable goals", "isCorrect": true},
+            {"text": "Study with the TV on", "isCorrect": false},
+            {"text": "Frequently check social media", "isCorrect": false},
+            {"text": "Skip breaks", "isCorrect": false}
+        ]
+    }
+    
+            // Add more questions here
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let shuffledQuestions = [];
+
+        function shuffleQuestions() {
+            shuffledQuestions = quizData
+                .map((question, index) => ({ index, ...question }))
+                .sort(() => Math.random() - 0.5);
+        }
+
+        function loadQuestion() {
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('submit-btn').style.display = 'none';
+            document.getElementById('skip-btn').style.display = 'inline-block'; // Ensure skip button is shown
+
+            const questionData = shuffledQuestions[currentQuestion];
+            document.getElementById('question-box').innerText = `Problem ${currentQuestion + 1}: ${questionData.question}`;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+
+            questionData.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.classList.add('option');
+                optionDiv.innerText = option.text;
+                optionDiv.onclick = () => checkAnswer(index, optionDiv, option.isCorrect);
+                optionsContainer.appendChild(optionDiv);
+            });
+        }
+
+        function checkAnswer(selectedIndex, selectedDiv, isCorrect) {
+            const questionData = shuffledQuestions[currentQuestion];
+            const resultElement = document.getElementById('result');
+            const options = document.getElementsByClassName('option');
+
+            // Lock all options to prevent further clicks
+            for (let i = 0; i < options.length; i++) {
+                options[i].onclick = null;
+                options[i].style.opacity = '0.6'; // Dim other options
+            }
+
+            // Highlight selected option
+            selectedDiv.style.opacity = '1';
+            const isAnswerCorrect = questionData.options[selectedIndex].isCorrect;
+
+            if (isAnswerCorrect) {
+                resultElement.innerText = "+100 points. Correct!";
+                resultElement.className = 'result correct';
+                selectedDiv.style.backgroundColor = '#28a745'; // Green for correct
+                score += 100;
+            } else {
+                resultElement.innerText = "Incorrect.";
+                resultElement.className = 'result incorrect';
+                selectedDiv.style.backgroundColor = '#dc3545'; // Red for incorrect
+            }
+
+            // Show the correct answers with fade effect
+            questionData.options.forEach((option, index) => {
+                if (option.isCorrect) {
+                    const correctOption = options[index];
+                    setTimeout(() => {
+                        correctOption.style.backgroundColor = '#28a745'; // Highlight correct answers in green
+                        correctOption.style.opacity = '1'; // Ensure correct answers are fully visible
+                    }, 500); // Delay to create fade effect
+                }
+            });
+
+            resultElement.style.display = 'block';
+            document.getElementById('score').innerText = score;
+            document.getElementById('submit-btn').style.display = 'block';
+            document.getElementById('skip-btn').style.display = 'none'; // Hide skip button after answer is selected
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < shuffledQuestions.length) {
+                loadQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function skipQuestion() {
+            nextQuestion();
+        }
+
+        function showFinalScore() {
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('final-score').innerText = `Your final score is ${score} out of ${shuffledQuestions.length * 100}.`;
+
+            setTimeout(() => {
+                document.getElementById('restart-btn').style.opacity = '1'; // Fade in the restart button
+            }, 500); // Delay the fade-in to make it more dramatic
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('restart-btn').style.opacity = '0'; // Reset the opacity of the restart button
+            shuffleQuestions();
+            loadQuestion();
+        }
+
+        shuffleQuestions();
+        loadQuestion();
+    </script>
+</body>
+</html>
